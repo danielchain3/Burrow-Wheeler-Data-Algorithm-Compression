@@ -1,26 +1,27 @@
 import java.util.ArrayList;
-import java.util.PriorityQueue<E>;
+import java.util.PriorityQueue;
 import java.util.HashMap;
+import java.util.Map;
 
 public class HuffmanTree{
 
 	private HuffmanTreeNode _root;
 	private int _size;
-	private HashMap<Character, Integer> _frequencyTable;
+	private PriorityQueue<Map.Entry<Character,Integer>> _queue;
 
 	public HuffmanTree(MTFE input){
 		
+		_queue = createQueue(input.getFrequencyTable());
+		//createTree(_queue);
+
 	}
 
-	public void calculateFrequency(MTFE input){
-		int val;
-		char ascii;
+	public PriorityQueue<Map.Entry<Character,Integer>> createQueue(HashMap<Character, Integer> table){
+		PriorityQueue<Map.Entry<Character,Integer>> queue = new PriorityQueue<Map.Entry<Character,Integer>>();
 		
-		for (int i = 0; i < 257; i++){
-			_asciiTable.add((char) i);
-		
-		ArrayList<Integer> array = input.encoded();
-		for (int i = 0; i < input.encoded().size(); i++){
-			val = array.get(i);
-			ascii = 
-			if (_frequencyTable.get(
+		for (Map.Entry<Character, Integer> entry : table.entrySet())
+			queue.add(entry);
+
+		return queue;
+	}
+}

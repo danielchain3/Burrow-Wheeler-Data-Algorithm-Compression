@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MTFE{
 	
@@ -7,14 +8,14 @@ public class MTFE{
 	private String _decoded;
 	private ArrayList<Integer> _encoded = new ArrayList<Integer>();
 	private int _size;
-	private HashMap<Character, Integer> _frequencyTable;
-
+	private HashMap<Character, Integer> _frequencyTable = new HashMap<Character, Integer>();
+	
 	public MTFE(String input){
-		asciiTable();
+		createAsciiTable();
 		_size = input.length();
 		_decoded = input;
 		encoding(_decoded);
-		_frequencyTable = new HashMap<Character, Integer>();
+		calculateFrequency();
 	}
 
 	public MTFE(ArrayList<Integer> input){
@@ -22,7 +23,7 @@ public class MTFE{
 		_size = input.size();
 		_encoded = input;
 		decoding(_encoded);
-		_frequencyTable = new HashMap<Character, Integer>();
+		calculateFrequency();
 	}
 
 	public void createAsciiTable(){
@@ -61,7 +62,7 @@ public class MTFE{
 	}
 
 	public void calculateFrequency(){
-		int val;
+		int index, value;
 		char ascii;
 		
 		ArrayList<Character> newAsciiTable = new ArrayList<Character>();
@@ -70,31 +71,34 @@ public class MTFE{
 			newAsciiTable.add((char) i);
 
 		for (int i = 0; i < _encoded.size(); i++){
-			val = _encoded.get(i); //used as an index
-			ascii = newAsciiTable.get(val);
+			index = _encoded.get(i); //used as an index
+			ascii = newAsciiTable.get(index);
 			
 			if(_frequencyTable.containsKey(ascii))
 				_frequencyTable.put(ascii, _frequencyTable.get(ascii) + 1);
 
 			else
 				_frequencyTable.put(ascii, 1);
+
+			value = newAsciiTable.get(index);
+			newAsciiTable.add(0, newAsciiTable.remove(index));
 		}
 	}
 
-	public ArrayList<Character> asciiTable(){
+	public ArrayList<Character> getAsciiTable(){
 		return _asciiTable;
 	}
 
 
-	public ArrayList<Integer> encodedMessage(){
+	public ArrayList<Integer> getEncodedMessage(){
 		return _encoded;
 	}
 
-	public String decodedMessage(){
+	public String getDecodedMessage(){
 		return _decoded;
 	}
 
-	public HashMap frequencyTable(){
+	public HashMap<Character, Integer> getFrequencyTable(){
 		return _frequencyTable;
 	}
 }
