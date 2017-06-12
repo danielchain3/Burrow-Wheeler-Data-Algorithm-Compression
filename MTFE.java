@@ -20,7 +20,6 @@ public class MTFE{
 		_size = input.size();
 		_encoded = input;
 		decoding(_encoded);
-		_size = 
 	}
 
 	public void createAsciiTable(){
