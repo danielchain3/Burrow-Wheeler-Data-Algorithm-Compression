@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HuffmanTree{
 
 	private HuffmanTreeNode _root;
-	private PQHeap<Integer,Character> _queue;
+	private int _size;
+	private PriorityQueue<Map.Entry<Character,Integer>> _queue;
 
 	public HuffmanTree(MTFE input){
 		
@@ -14,28 +16,20 @@ public class HuffmanTree{
 
 	}
 
-	public PQHeap<Integer,Character> createQueue(HashMap<Character, Integer> table){
-		PQHeap<Integer,Character> queue = new PQHeap<Integer,Character>();
-		Character[] keys = table.keySet().toArray(new Character[table.size()]);
-		for (Character value : keys)
-			queue.add(table.get(value),value);
+	public HuffmanTreeNode createQueue(HashMap<Character, Integer> table){
+		//create the huffmanTreeNode and make a priority queue out of it.
+		PriorityQueue<HuffmanTreeNode> queue = new PriorityQueue<HuffmanTreeNode>() {
+			
+			//Overrides current comparator in priorityQueue;
+			public int compare(HuffmanTreeNode entry1, HuffmanTreeNode entry2){
+				 return entry2.getValue() - entry1.getValue();
+			
+			}
+		};
+		
+		for ( : table.entrySet())
+			queue.add(new HuffmanTreeNode(;
 
 		return queue;
-	}
-	
-	public void createTree(PQHeap<Integer,Character> queue){
-		int size = _queue.size();
-		PQHeap<Integer, Character> left, right, parent;
-
-		while (_queue.size() > 1) {
-			left = _queue.removeMin();
-			right = _queue.removeMin();
-
-			queue.add(left.getKey() + right.getKey(), null);
-
-	}
-
-	public PQHeap<Integer, Character> getQueue(){
-		return _queue;
 	}
 }
