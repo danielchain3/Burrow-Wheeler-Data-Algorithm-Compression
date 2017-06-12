@@ -5,7 +5,6 @@ import java.util.Map;
 public class HuffmanTree{
 
 	private HuffmanTreeNode _root;
-	private int _size;
 	private PQHeap<Integer,Character> _queue;
 
 	public HuffmanTree(MTFE input){
@@ -25,8 +24,17 @@ public class HuffmanTree{
 	}
 	
 	public void createTree(PQHeap<Integer,Character> queue){
-		
+		int size = _queue.size();
+		PQHeap<Integer, Character> left, right, parent;
+
+		while (_queue.size() > 1) {
+			left = _queue.removeMin();
+			right = _queue.removeMin();
+
+			queue.add(left.getKey() + right.getKey(), null);
+
 	}
+
 	public PQHeap<Integer, Character> getQueue(){
 		return _queue;
 	}
