@@ -22,7 +22,7 @@ public class Testing{
         printMatrix(mat);
 
         System.out.println("Take the last column of letters and turn them into a string: ");
-        System.out.println("\t" + "Encoded: " + a.getStringPortion());
+        System.out.println("\t" + "Encoded: " + a.getEncoded());
         System.out.println("\t" + "Row of original: " + rowOfOriginal);
 
         BWTD aDecoded = new BWTD(a);

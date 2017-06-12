@@ -3,14 +3,13 @@ public class BWTE{
     private String _givenString;
     private int _length;
     private String _encoded;
-    private String _encodedWord;
     private int _rowOfOriginal;
 
     public BWTE(String givenString){
         _givenString = givenString;
         _length = givenString.length();
-        _encoded = createBWT();
-	_rowOfOriginal = sortMatrix(createMatrix());
+        _encoded = createBWT(); 
+	    _rowOfOriginal = sortMatrix(createMatrix());
     } 
 
 
@@ -19,15 +18,9 @@ public class BWTE{
         return _rowOfOriginal;
     }
 
-    //returns string portion
-    public String getStringPortion(){
-        String thing = _rowOfOriginal + "";
-	return _encoded.substring(thing.length());
-    } 
-
     //gets the whole thing
     public String getEncoded(){
-	return _encoded;
+	    return _encoded;
     }
 
     //creates a matrix with all the rotations of the string
@@ -110,8 +103,7 @@ public class BWTE{
     public String createBWT(){
         String [][] mat = createMatrix();
         _rowOfOriginal = sortMatrix(mat);
-	    _encodedWord = produceString(mat);
-        return _rowOfOriginal + _encodedWord;
+	    return produceString(mat);
     }
 
 

@@ -1,11 +1,14 @@
 public class BWTD{
 
+    //supposedly takes the result of move to front decoding
+
     private String _encodedString;
     private int _rowOfOriginal;
     private int _length;
     
-    public BWTD(BWTE encoded){
-        _encodedString = encoded.getStringPortion();
+    //gets the output of reverse 
+    public BWTD(BWTE encoded){ 
+        _encodedString = encoded.getEncoded();
         _rowOfOriginal = encoded.getRow();
         _length = _encodedString.length();
     }
