@@ -3,16 +3,18 @@ import java.util.HashMap;
 
 public class MTFE{
 	
-	public ArrayList<Character> _asciiTable = new ArrayList<Character>();
-	public String _decoded;
-	public ArrayList<Integer> _encoded = new ArrayList<Integer>();
-	public int _size;
+	private ArrayList<Character> _asciiTable = new ArrayList<Character>();
+	private String _decoded;
+	private ArrayList<Integer> _encoded = new ArrayList<Integer>();
+	private int _size;
+	private HashMap<Character, Integer> _frequencyTable;
 
 	public MTFE(String input){
 		asciiTable();
 		_size = input.length();
 		_decoded = input;
 		encoding(_decoded);
+		_frequencyTable = new HashMap<Character, Integer>();
 	}
 
 	public MTFE(ArrayList<Integer> input){
@@ -20,6 +22,7 @@ public class MTFE{
 		_size = input.size();
 		_encoded = input;
 		decoding(_encoded);
+		_frequencyTable = new HashMap<Character, Integer>();
 	}
 
 	public void createAsciiTable(){
@@ -61,13 +64,22 @@ public class MTFE{
 		int val;
 		char ascii;
 		
-		for (int i = 0; i < 257; i++){
-			_asciiTable.add((char) i);
-		
-		for (int i = 0; i < encoded().size(); i++){
-			val = array.get(i);
-			ascii = 
-			if (_frequencyTable.get(
+		ArrayList<Character> newAsciiTable = new ArrayList<Character>();
+
+		for (int i = 0; i < 257; i++)
+			newAsciiTable.add((char) i);
+
+		for (int i = 0; i < _encoded.size(); i++){
+			val = _encoded.get(i); //used as an index
+			ascii = newAsciiTable.get(val);
+			
+			if(_frequencyTable.containsKey(ascii))
+				_frequencyTable.put(ascii, _frequencyTable.get(ascii) + 1);
+
+			else
+				_frequencyTable.put(ascii, 1);
+		}
+	}
 
 	public ArrayList<Character> asciiTable(){
 		return _asciiTable;
@@ -80,5 +92,9 @@ public class MTFE{
 
 	public String decodedMessage(){
 		return _decoded;
+	}
+
+	public HashMap frequencyTable(){
+		return _frequencyTable;
 	}
 }
