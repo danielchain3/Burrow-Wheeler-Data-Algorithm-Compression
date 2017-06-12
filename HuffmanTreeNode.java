@@ -1,10 +1,10 @@
-public class HuffmanTreeNode{
+public class HuffmanTreeNode implements Comparable<HuffmanTreeNode>{
 	
 	private Integer _frequency;
 	private char _letter;
 	private HuffmanTreeNode _left, _right;
 
-	public HuffmanTreeNode(Integer frequency, char letter) {
+	public HuffmanTreeNode(Integer frequency, char letter){
 		this(frequency, letter, null, null);
 	}
 
@@ -17,6 +17,10 @@ public class HuffmanTreeNode{
 
 	public Integer getValue(){
 		return _frequency;
+	}
+
+	public char getLetter(){
+		return _letter;
 	}
 
 	public HuffmanTreeNode getLeft(){
@@ -36,8 +40,7 @@ public class HuffmanTreeNode{
 	public HuffmanTreeNode setRight(HuffmanTreeNode newRight){
 		HuffmanTreeNode ans = getRight();
 		_right = newRight;
-		return ans;
-	}
+		return ans; }
 
 	public HuffmanTreeNode setLeft(HuffmanTreeNode newLeft){
 		HuffmanTreeNode ans = getLeft();
@@ -52,4 +55,16 @@ public class HuffmanTreeNode{
 	public String toString(){
 		return getValue() + "";
 	}
+
+	public int compareTo(HuffmanTreeNode right){
+		if (this.getValue() < right.getValue())
+			return -1;
+		
+		else if(this.getValue() > right.getValue())
+			return 1;
+
+		else
+			return 0;
+	}
+
 }

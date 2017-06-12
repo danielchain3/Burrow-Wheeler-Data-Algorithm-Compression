@@ -5,7 +5,7 @@ import java.util.Map;
 public class main{
 
 	public static void main(String[] args){
-		MTFE test = new MTFE("aadasfbc");
+		MTFE test = new MTFE("I dont understand what i am saying but this is cool");
 		
 		System.out.println(test.getEncodedMessage().toString());
 		System.out.println(test.getFrequencyTable().toString());
@@ -14,7 +14,7 @@ public class main{
 			System.out.println("Key: " + entry.getKey() + "\tValue: " + entry.getValue());
 
 		HuffmanTree tree = new HuffmanTree(test);
-		System.out.println(tree.getQueue().toString());
+		System.out.println(tree.toString(tree.getTree()));
 	}
 }
 
