@@ -8,12 +8,9 @@ public class HuffmanTree{
 	private HuffmanTreeNode _root;
 	private int _size;
 	private PriorityQueue<HuffmanTreeNode> _queue;
-	private HashMap<Character,Integer> _frequencyTable;
-
-
+	
 	public HuffmanTree(MTFE input){
-		_frequencyTable = input.getFrequencyTable();
-		_queue = createQueue(_frequencyTable);
+		_queue = createQueue(input.getFrequencyTable());
 		createTree(_queue);
 
 	}
@@ -44,11 +41,8 @@ public class HuffmanTree{
 
 		_root = queue.remove();
 	}
-/*
-	public void HuffmanEncoding(){
 
-	}
-*/
+
 	public HuffmanTreeNode getTree(){
 		return _root;
 	}
