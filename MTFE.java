@@ -5,7 +5,7 @@ import java.util.Map;
 public class MTFE{
 	
 	private ArrayList<Character> _asciiTable = new ArrayList<Character>();
-	private ArrayList<Character> _decoded;
+	private String _decoded;
 	private ArrayList<Integer> _encoded = new ArrayList<Integer>();
 	private int _size;
 	private HashMap<Character, Integer> _frequencyTable = new HashMap<Character, Integer>();
