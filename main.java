@@ -4,7 +4,8 @@ public class main{
 
 	public static void main(String[] args){
 		MTFE test = new MTFE("AAAABBA");
-		
+
+		System.out.println(test.getDecodedMessage());
 		System.out.println(test.getEncodedMessage().toString());
 		System.out.println(test.getFrequencyTable().toString());
 		
@@ -16,6 +17,7 @@ public class main{
 
 		Huffman ans = new Huffman(tree, test);
 		System.out.println(ans.getEncodedMessage().toString());
+
 	}
 }
 

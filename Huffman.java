@@ -19,6 +19,7 @@ public class Huffman{
 		Character value;
 		Integer frequency;
 		HuffmanTreeNode root = rt;
+		_encoded = "";
 
 		for (int i = 0; i < input.size(); i++){
 			value = input.get(i);
@@ -34,7 +35,17 @@ public class Huffman{
 		String retString = "";
 
 		while (curr != null && !val.equals(curr.getValue())){
-		    if (val.compareTo(curr.getValue()) < 0) {
+		    if (curr.getLeft() == null){
+				retString += 0;
+				curr = curr.getRight();
+			}
+
+			else if (curr.getRight() == null){
+				retString += 1;
+				curr = curr.getLeft();
+			}
+
+			else if (val < curr.getLeft().getValue()) {
 				retString += 0;
 				curr = curr.getLeft();
 			}
