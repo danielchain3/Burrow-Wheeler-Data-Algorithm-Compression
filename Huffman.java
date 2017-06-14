@@ -6,34 +6,15 @@ public class Huffman{
 	private ArrayList<String> _encoded = new ArrayList<String>(); ;
 	private HashMap<Character,Integer> _frequencyTable;
 	private HuffmanTreeNode _root;
-	public String test;
 
 	public Huffman(HuffmanTree rt, MTFE input){
 		_decoded = input.getDecodedMessage();
 		_frequencyTable = input.getFrequencyTable();
 		_root = rt.getTree();
-		test = test(input.getCharacters(), _root);
 		createEncodedMessage(input.getCharacters(), _root);
 
 	}
 	
-	public String test(ArrayList<Character> input, HuffmanTreeNode rt){
-		Character value;
-		Integer frequency;
-		String path = "";
-		HuffmanTreeNode root = rt;
-		boolean test;
-
-		for (int i = 0; i < input.size(); i++){
-			value = input.get(i);
-			path += "Value: " + value + "\t";
-			frequency = _frequencyTable.get(value);
-			path += "Frequency: " + frequency + "\t" + (frequency < root.getRight().getValue()) + "\t" + root.getRight().getValue() + "\n";
-		}
-
-		return path;
-	}
-
 	public void createEncodedMessage(ArrayList<Character> input, HuffmanTreeNode rt){
 		Character value;
 		Integer frequency;
