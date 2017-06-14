@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MTFE{
 	
@@ -8,6 +6,7 @@ public class MTFE{
 	private String _decoded;
 	private ArrayList<Integer> _encoded = new ArrayList<Integer>();
 	private int _size;
+	private ArrayList<Character> _characters = new ArrayList<Character>();
 	private HashMap<Character, Integer> _frequencyTable = new HashMap<Character, Integer>();
 	
 	public MTFE(String input){
@@ -63,7 +62,7 @@ public class MTFE{
 
 	public void calculateFrequency(){
 		int index, value;
-		char ascii;
+		Character ascii;
 		
 		ArrayList<Character> newAsciiTable = new ArrayList<Character>();
 
@@ -74,16 +73,24 @@ public class MTFE{
 			index = _encoded.get(i); //used as an index
 			ascii = newAsciiTable.get(index);
 			
-			if(_frequencyTable.containsKey(ascii))
+			if(_frequencyTable.containsKey(ascii)){
+				_characters.add(ascii);
 				_frequencyTable.put(ascii, _frequencyTable.get(ascii) + 1);
-
-			else
+			}
+			else {
+				_characters.add(ascii);
 				_frequencyTable.put(ascii, 1);
+			}
 
 			value = newAsciiTable.get(index);
 			newAsciiTable.add(0, newAsciiTable.remove(index));
 		}
 	}
+
+	public ArrayList<Character> getCharacters(){
+		return _characters;
+	}
+
 
 	public ArrayList<Character> getAsciiTable(){
 		return _asciiTable;

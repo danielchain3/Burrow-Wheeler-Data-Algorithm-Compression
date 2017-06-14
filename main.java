@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class main{
 
@@ -17,8 +15,8 @@ public class main{
 		System.out.println(tree.toString(tree.getTree()));
 
 		Huffman ans = new Huffman(tree, test);
-
-		System.out.println(ans.getDecodedMessage().CharAt(0) 
+		System.out.println(ans.test);
+		System.out.println(ans.getEncodedMessage().toString());
 	}
 }
 
