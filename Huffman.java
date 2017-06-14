@@ -24,7 +24,7 @@ public class Huffman{
 			value = input.get(i);
 			frequency = _frequencyTable.get(value);
 
-			_encoded +=find(frequency,root));
+			_encoded +=find(frequency,root);
 		}
 	}
 
@@ -47,7 +47,7 @@ public class Huffman{
 		return retString;
 	}
 
-	public ArrayList<String> getEncodedMessage(){
+	public String getEncodedMessage(){
 		return _encoded;
 	}
 

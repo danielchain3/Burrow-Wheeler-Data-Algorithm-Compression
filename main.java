@@ -15,7 +15,6 @@ public class main{
 		System.out.println(tree.toString(tree.getTree()));
 
 		Huffman ans = new Huffman(tree, test);
-		System.out.println(ans.test);
 		System.out.println(ans.getEncodedMessage().toString());
 	}
 }
