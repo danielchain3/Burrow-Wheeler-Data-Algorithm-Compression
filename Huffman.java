@@ -3,7 +3,7 @@ import java.util.*;
 public class Huffman{
 
 	private String _decoded;
-	private ArrayList<String> _encoded = new ArrayList<String>(); ;
+	private String _encoded;
 	private HashMap<Character,Integer> _frequencyTable;
 	private HuffmanTreeNode _root;
 
@@ -24,7 +24,7 @@ public class Huffman{
 			value = input.get(i);
 			frequency = _frequencyTable.get(value);
 
-			_encoded.add(find(frequency,root));
+			_encoded +=find(frequency,root));
 		}
 	}
 
