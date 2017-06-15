@@ -3,7 +3,7 @@ import java.util.*;
 public class main{
 
 	public static void main(String[] args){
-		MTFE test = new MTFE("AAAABBA");
+		MTFE test = new MTFE("ABcDDasdasfs asdaf  Dc");
 
 		System.out.println(test.getDecodedMessage());
 		System.out.println(test.getEncodedMessage().toString());
@@ -16,11 +16,17 @@ public class main{
 		System.out.println(tree.toString(tree.getTree()));
 
 		Huffman ans = new Huffman(tree, test);
-		System.out.println(ans.getEncodedMessage().toString());
+		System.out.println(ans.getEncodedMessage());
 
-		HuffmansR decode = new HuffmansR("111100", tree);
+		HuffmansR decode = new HuffmansR(ans.getEncodedMessage(), tree);
 
 		System.out.println(decode.decode().toString());
-	}
+/*	
+		String[] st = ans.getSt();
+
+		for (String a : st){
+			System.out.println(a);
+		}
+*/	}
 }
 

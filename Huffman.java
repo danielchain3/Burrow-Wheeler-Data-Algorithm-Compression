@@ -4,58 +4,38 @@ public class Huffman{
 
 	private String _decoded;
 	private String _encoded;
-	private HashMap<Character,Integer> _frequencyTable;
 	private HuffmanTreeNode _root;
-
+	private String[] st = new String[256];
+	
 	public Huffman(HuffmanTree rt, MTFE input){
 		_decoded = input.getDecodedMessage();
-		_frequencyTable = input.getFrequencyTable();
 		_root = rt.getTree();
-		createEncodedMessage(input.getCharacters(), _root);
-
+        buildCode(st, _root, "");
+		createEncodedMessage(input.getCharacters());
 	}
 	
-	public void createEncodedMessage(ArrayList<Character> input, HuffmanTreeNode rt){
-		Character value;
-		Integer frequency;
-		HuffmanTreeNode root = rt;
+	public void createEncodedMessage(ArrayList<Character> input){
+		Character letter;
 		_encoded = "";
 
 		for (int i = 0; i < input.size(); i++){
-			value = input.get(i);
-			frequency = _frequencyTable.get(value);
-
-			_encoded +=find(frequency,root);
+			letter = input.get(i);
+			_encoded += st[letter];
 		}
 	}
 
-
-    private String find(Integer val, HuffmanTreeNode root){
-		HuffmanTreeNode curr = root;
-		String retString = "";
-
-		while (curr != null && !val.equals(curr.getValue())){
-		    if (curr.getLeft() == null){
-				retString += 0;
-				curr = curr.getRight();
-			}
-
-			else if (curr.getRight() == null){
-				retString += 1;
-				curr = curr.getLeft();
-			}
-
-			else if (val < curr.getLeft().getValue()) {
-				retString += 0;
-				curr = curr.getLeft();
-			}
-
-		    else{ 
-				retString += 1;
-				curr = curr.getRight();
-			}
+    private static void buildCode(String[] st, HuffmanTreeNode x, String s) {
+		if (!x.isLeaf()) {
+			buildCode(st, x.getLeft(),  s + '0');
+			buildCode(st, x.getRight(), s + '1');
 		}
-		return retString;
+		else {
+			st[x.getLetter()] = s;
+		}
+	}
+
+	public String[] getSt(){
+		return st;
 	}
 
 	public String getEncodedMessage(){

@@ -15,33 +15,22 @@ public class HuffmansR{
         ArrayList<Character> recreatedList = new ArrayList<Character>();
         HuffmanTreeNode currNode = _rt;
         for(int i = 0; i < _huffmansEncoded.length(); i++){
-            if(!currNode.isLeaf()){
-                if(_huffmansEncoded.substring(i, i+1).equals("0"))
-                    currNode = currNode.getLeft();
-
-				else 
-                    currNode = currNode.getRight();
-
-            }
-			
-			else {
-                recreatedList.add(currNode.getLetter());
-                currNode = _rt;
-                if(_huffmansEncoded.substring(i, i+1).equals("0")){
-                    currNode = currNode.getLeft();
-					if(currNode.isLeaf()){
-						recreatedList.add(currNode.getLetter());
-						currNode = _rt;
-					}
-				}
-				else{
-                    currNode = currNode.getRight();
-					if(currNode.isLeaf()){
-						recreatedList.add(currNode.getLetter());
-						currNode = _rt;
-					}
+            if(_huffmansEncoded.substring(i, i+1).equals("0")){
+                currNode = currNode.getLeft();
+				if (currNode.isLeaf()){
+					recreatedList.add(currNode.getLetter());
+					currNode = _rt;
 				}
 			}
+
+			else { 
+                currNode = currNode.getRight();
+				if (currNode.isLeaf()){
+					recreatedList.add(currNode.getLetter());
+					currNode = _rt;
+				}
+			}
+
 		}
         return recreatedList;
 	}
