@@ -18,6 +18,9 @@ public class main{
 		Huffman ans = new Huffman(tree, test);
 		System.out.println(ans.getEncodedMessage().toString());
 
+		HuffmansR decode = new HuffmansR("111100", tree);
+
+		System.out.println(decode.decode().toString());
 	}
 }
 
