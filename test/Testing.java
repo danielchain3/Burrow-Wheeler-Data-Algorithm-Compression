@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Testing{
 
     //for square matrices
@@ -15,8 +17,9 @@ public class Testing{
         String test = "Somebody Once Told Me";
         BWTE a = new BWTE(test);
         String[][] mat = a.createMatrix();
+		System.out.println("Burrow-Wheeler Transformation");
         printMatrix(mat);
-
+		
         System.out.println("Then sort the arrays:");
         int rowOfOriginal = a.sortMatrix(mat); //sortMatrix also produces an integer. 
         printMatrix(mat);
@@ -24,6 +27,7 @@ public class Testing{
         System.out.println("Take the last column of letters and turn them into a string: ");
         System.out.println("\t" + "Encoded: " + a.getEncoded());
         System.out.println("\t" + "Row of original: " + rowOfOriginal);
+
 
         BWTD aDecoded = new BWTD(a);
         System.out.println("\n" + "\"dyeenlocmMoo ObTS e d\" Decoded: " + aDecoded.getDecoded());

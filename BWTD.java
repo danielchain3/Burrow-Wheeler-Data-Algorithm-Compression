@@ -7,8 +7,8 @@ public class BWTD{
     private int _length;
     
     //gets the output of reverse 
-    public BWTD(BWTE encoded){ 
-        _encodedString = encoded.getEncoded();
+    public BWTD(MTFD encoded){ 
+        _encodedString = encoded.getDecodedMessage();
         _rowOfOriginal = encoded.getRow();
         _length = _encodedString.length();
     }

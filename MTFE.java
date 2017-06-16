@@ -3,26 +3,20 @@ import java.util.*;
 public class MTFE{
 	
 	private ArrayList<Character> _asciiTable = new ArrayList<Character>();
-	private String _decoded;
-	private ArrayList<Integer> _encoded = new ArrayList<Integer>();
-	private int _size;
 	private ArrayList<Character> _characters = new ArrayList<Character>();
+	private ArrayList<Integer> _encoded = new ArrayList<Integer>();
 	private HashMap<Character, Integer> _frequencyTable = new HashMap<Character, Integer>();
+	private String _decoded;
+	private int _size;
+	private int _rowOfOriginal;
 	
-	public MTFE(String input){
+	public MTFE(BWTE input){
 		createAsciiTable();
-		_size = input.length();
-		_decoded = input;
+		_size = input.getEncoded().length();
+		_decoded = input.getEncoded();
 		encoding(_decoded);
 		calculateFrequency();
-	}
-
-	public MTFE(ArrayList<Integer> input){
-		createAsciiTable();
-		_size = input.size();
-		_encoded = input;
-		decoding(_encoded);
-		calculateFrequency();
+		_rowOfOriginal = input.getRow();
 	}
 
 	public void createAsciiTable(){
@@ -49,17 +43,6 @@ public class MTFE{
 		}
 	}
 
-	public void decoding(ArrayList<Integer> input){		
-		_decoded = "";
-		int pos;
-
-		for (int i = 0; i < input.size(); i++){
-			pos = input.get(i);
-			_decoded += _asciiTable.get(pos);
-			_asciiTable.add(0,_asciiTable.remove(pos));
-		}
-	}
-
 	public void calculateFrequency(){
 		int index, value;
 		Character ascii;
@@ -77,7 +60,8 @@ public class MTFE{
 				_characters.add(ascii);
 				_frequencyTable.put(ascii, _frequencyTable.get(ascii) + 1);
 			}
-			else {
+
+			else{
 				_characters.add(ascii);
 				_frequencyTable.put(ascii, 1);
 			}
@@ -87,15 +71,13 @@ public class MTFE{
 		}
 	}
 
-	public ArrayList<Character> getCharacters(){
-		return _characters;
-	}
-
-
 	public ArrayList<Character> getAsciiTable(){
 		return _asciiTable;
 	}
 
+	public ArrayList<Character> getCharacters(){
+		return _characters;
+	}
 
 	public ArrayList<Integer> getEncodedMessage(){
 		return _encoded;
@@ -108,4 +90,8 @@ public class MTFE{
 	public HashMap<Character, Integer> getFrequencyTable(){
 		return _frequencyTable;
 	}
+
+    public int getRow(){
+        return _rowOfOriginal;
+    }
 }
